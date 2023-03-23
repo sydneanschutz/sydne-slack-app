@@ -10,9 +10,13 @@ responding to events and interactive buttons.
 ### Setup environment variables
 
 Ensure you have node js installed https://nodejs.org/en/download
+
 Run `npm i`
+
 Ensure you have a test app creating according to https://api.slack.com/start/building/bolt-js#create
+
 Copy `.env.template` to your own `.env`
+
 Set your apps `SLACK_BOT_TOKEN` and `SLACK_APP_TOKEN`
 
 ### Start server
