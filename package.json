@@ -4,19 +4,18 @@
   "description": "Getting Started ⚡️ Bolt for JavaScript",
   "main": "app.js",
   "scripts": {
-    "start": "node ./out/app.js",
+    "start": "node ./dist/app.js",
+    "dev": "ts-node-dev ./src/app.ts",
     "test": "vitest",
-    "dev": "concurrently \"esbuild src/app.js --bundle --platform=node --outdir=out --watch\" \"nodemon ./out/app.js\"",
-    "build":  "esbuild src/app.js --bundle --platform=node --outdir=out"
+    "build": "tsc"
   },
   "license": "MIT",
   "dependencies": {
     "@slack/bolt": "^3.6.0",
     "concurrently": "^7.6.0",
     "dotenv": "^16.0.3",
-    "esbuild": "^0.17.12",
-    "nodemon": "^2.0.21",
     "prettier": "^2.8.6",
+    "ts-node-dev": "^2.0.0",
     "typescript": "^5.0.2",
     "vitest": "^0.29.7"
   }

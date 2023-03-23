@@ -28,12 +28,16 @@ Ensure your app has the following setting set at https://api.slack.com/apps
 Interactivity & Shortcuts
 - Interactivity toggled on
 - Request URL set to https://<<ngrok_url>>/slack/events
-- 
+
 Event Subscriptions
 - Enable events toggled on
 - Request URL set to https://<<ngrok_url>>/slack/events
 - Subscribe to bot events
   - app_home_opened
+
+OAuth & Permissions
+- Bot Token Scopes
+  - add `chat:write`
 
 ### 4. Test
 
