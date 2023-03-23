@@ -1,0 +1,23 @@
+{
+  "name": "bolt-js-getting-started-app",
+  "version": "2.0.0",
+  "description": "Getting Started ⚡️ Bolt for JavaScript",
+  "main": "app.js",
+  "scripts": {
+    "start": "node ./out/app.js",
+    "test": "vitest",
+    "dev": "concurrently \"esbuild src/app.js --bundle --platform=node --outdir=out --watch\" \"nodemon ./out/app.js\"",
+    "build":  "esbuild src/app.js --bundle --platform=node --outdir=out"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@slack/bolt": "^3.6.0",
+    "concurrently": "^7.6.0",
+    "dotenv": "^16.0.3",
+    "esbuild": "^0.17.12",
+    "nodemon": "^2.0.21",
+    "prettier": "^2.8.6",
+    "typescript": "^5.0.2",
+    "vitest": "^0.29.7"
+  }
+}
