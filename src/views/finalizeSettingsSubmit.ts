@@ -1,6 +1,8 @@
+import { ViewOutput, ViewSubmitAction } from "@slack/bolt";
+
 export async function onFinalizeSettingsSubmit(
-  body: any,
-  view: any
+  body: ViewSubmitAction,
+  view: ViewOutput
 ): Promise<any> {
   console.log("Hello Sydne");
   console.log(JSON.stringify(view["state"]["values"]));

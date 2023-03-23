@@ -1,5 +1,4 @@
-import { AppHomeOpenedEvent, App, View, HomeView } from "@slack/bolt";
-import { ViewsPublishResponse } from "@slack/web-api/dist/response/ViewsPublishResponse";
+import { AppHomeOpenedEvent } from "@slack/bolt";
 
 export async function onAppHomeOpened(event: AppHomeOpenedEvent): Promise<any> {
   const view: any = {

@@ -1,11 +1,9 @@
-import { AppHomeOpenedEvent, Option } from "@slack/bolt";
-import { client, FinalizeUserSettings, MarkdownOption } from "../client";
-import { MrkdwnOption } from "@slack/types";
-import { findInitialOptions } from "../utils";
+import { BlockAction, Context } from "@slack/bolt";
+import { client, MarkdownOption } from "../client";
 
 export async function onFinalizeSettingsAction(
-  context: any,
-  body: any
+  context: Context,
+  body: BlockAction
 ): Promise<any> {
   const data: any = client.messaging.getUserFinalizeSettings();
 
@@ -56,15 +54,9 @@ export async function onFinalizeSettingsAction(
     },
   ];
 
-  let specificToMeInitialOptions: MarkdownOption[] = [];
-
-  for (let i = 0; i < specificToMeOptions.length; i++) {
-    let specificToMeOption: MarkdownOption = specificToMeOptions[i];
-
-    if (data[specificToMeOption.value] == true) {
-      specificToMeInitialOptions.push(specificToMeOption);
-    }
-  }
+  let specificToMeInitialOptions = specificToMeOptions.filter(
+    (o) => data[o.value] === true
+  );
 
   let agreementStatusUpdateOptions: MarkdownOption[] = [
     {
@@ -118,20 +110,21 @@ export async function onFinalizeSettingsAction(
     },
   ];
 
-  let agreementStatusUpdateInitialOptions: MarkdownOption[] = [];
-
-  for (let i = 0; i < agreementStatusUpdateOptions.length; i++) {
-    let agreementStatusUpdateOption: MarkdownOption =
-      agreementStatusUpdateOptions[i];
-
-    if (data[agreementStatusUpdateOption.value] == true) {
-      agreementStatusUpdateInitialOptions.push(agreementStatusUpdateOption);
-    }
-  }
+  let agreementStatusUpdateInitialOptions = agreementStatusUpdateOptions.filter(
+    (o) => data[o.value] === true
+  );
 
   const blocks = [
     {
       type: "divider",
+    },
+    {
+      type: "header",
+      text: {
+        type: "plain_text",
+        text: "Settings Specific to me",
+        emoji: true,
+      },
     },
     {
       type: "input",

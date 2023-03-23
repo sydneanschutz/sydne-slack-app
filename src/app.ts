@@ -1,4 +1,11 @@
-import { App, AppHomeOpenedEvent } from "@slack/bolt";
+import {
+  App,
+  AppHomeOpenedEvent,
+  BlockAction,
+  Context,
+  ViewOutput,
+  ViewSubmitAction,
+} from "@slack/bolt";
 import dotenv from "dotenv";
 import { onAppHomeOpened } from "./events/appHomeOpened";
 import { onFinalizeSettingsAction } from "./actions/finalizeSettings";
@@ -29,8 +36,11 @@ app.event("app_home_opened", async ({ event, client, context }) => {
 app.action("finalize_settings", async ({ ack, body, context }) => {
   await ack();
 
+  const c = context as Context;
+  const b = body as BlockAction;
+
   try {
-    await app.client.views.open(await onFinalizeSettingsAction(context, body));
+    await app.client.views.open(await onFinalizeSettingsAction(c, b));
   } catch (error) {
     console.error(error);
   }
@@ -41,8 +51,11 @@ app.view(
   async ({ ack, body, view, client, logger }) => {
     await ack();
 
+    const b = body as ViewSubmitAction;
+    const v = view as ViewOutput;
+
     try {
-      await app.client.views.open(await onFinalizeSettingsSubmit(body, view));
+      await onFinalizeSettingsSubmit(b, v);
     } catch (error) {
       console.error(error);
     }
