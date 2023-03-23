@@ -1,26 +1,42 @@
-# Getting Started ⚡️ Bolt for JavaScript
-> Slack app example from 📚 [Getting started with Bolt for JavaScript tutorial][1]
+# Linksquares Slack App using ⚡️ Bolt for JavaScript
 
 ## Overview
 
-This is a Slack app built with the [Bolt for JavaScript framework][2] that showcases
+This is a Slack app built with the [Bolt for JavaScript framework][https://api.slack.com/start/building/bolt-js#create] that showcases
 responding to events and interactive buttons.
 
 ## Running locally
 
 ### Setup environment variables
 
+Ensure you have node js installed https://nodejs.org/en/download
+Run `npm i`
+Ensure you have a test app creating according to https://api.slack.com/start/building/bolt-js#create
+Copy `.env.template` to your own `.env`
+Set your apps `SLACK_BOT_TOKEN` and `SLACK_APP_TOKEN`
+
+### Start server
+
 ```zsh
-# Replace with your bot and app token
-export SLACK_BOT_TOKEN=<your-bot-token> # from the OAuth section
-export SLACK_APP_TOKEN=<your-app-level-token> # from the Basic Info App Token Section
+npm run dev
 ```
 
-### Start servers
-```zsh
-npm start
-```
+Run ngrok to expose your local server publicly
+
+Ensure your app has the following setting set at https://api.slack.com/apps
+
+Interactivity & Shortcuts
+- Interactivity toggled on
+- Request URL set to https://<<ngrok_url>>/slack/events
+- 
+Event Subscriptions
+- Enable events toggled on
+- Request URL set to https://<<ngrok_url>>/slack/events
+- Subscribe to bot events
+  - app_home_opened
 
 ### 4. Test
 
-Go to the installed workspace and type **Hello** in a DM to your new bot. You can also type **Hello** in a channel where the bot is present
+```zsh
+npm test
+```
