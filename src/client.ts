@@ -32,9 +32,10 @@ export type FinalizeUserSettings = {
   agreement_created_from_request: boolean;
 };
 
+// Will call the messaging service in the future
 export const client = {
   messaging: {
-    getUserFinalizeSettings: (): FinalizeUserSettings => {
+    getUserFinalizeSettings: (userId: string): FinalizeUserSettings => {
       return {
         draft_uploaded: true,
         internal_review: false,

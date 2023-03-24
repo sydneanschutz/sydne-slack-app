@@ -54,6 +54,8 @@ app.view(
     const b = body as ViewSubmitAction;
     const v = view as ViewOutput;
 
+    console.log(b.user);
+
     try {
       await onFinalizeSettingsSubmit(b, v);
     } catch (error) {

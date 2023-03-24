@@ -5,7 +5,7 @@ export async function onFinalizeSettingsAction(
   context: Context,
   body: BlockAction
 ): Promise<any> {
-  const data: any = client.messaging.getUserFinalizeSettings();
+  const data: any = client.messaging.getUserFinalizeSettings(body.user.id);
 
   let specificToMeOptions: MarkdownOption[] = [
     {
